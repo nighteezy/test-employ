@@ -1,0 +1,39 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.footer {
+  background: $bg-color;
+  border-top: 1px solid $border-color;
+  padding: 20px 0;
+  margin-top: 40px;
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__contact {
+    color: $accent-color;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  &__payments {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__payment {
+    max-height: 30px;
+  }
+}

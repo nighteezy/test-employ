@@ -1,0 +1,49 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  background: $bg-color;
+  border-bottom: 1px solid $border-color;
+  z-index: 100;
+  opacity: 0.9;
+  border: none;
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  &__accent {
+    color: $accent-color;
+  }
+
+  &__menu {
+    display: flex;
+    list-style: none;
+    gap: 60px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $text-color;
+    @include transition(0.3s);
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
