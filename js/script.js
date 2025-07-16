@@ -26,4 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
       customSelect.classList.remove("open");
     }
   });
+
+  const burger = document.querySelector(".header__burger");
+  const menu = document.querySelector(".header__menu");
+  if (burger && menu) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("active");
+      menu.classList.toggle("active");
+    });
+  }
 });

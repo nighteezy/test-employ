@@ -1,3 +1,24 @@
+@use "sass:math";
+@use "sass:meta";
+
+@function strip-unit($number) {
+  @if meta.type-of($number) == "number" {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+@mixin fluid($property, $min, $max, $min-vw: 320px, $max-vw: 1200px) {
+  #{$property}: clamp(
+    #{$min},
+    calc(
+      #{$min} + (#{strip-unit($max)} - #{strip-unit($min)}) * ((
+              100vw - #{$min-vw}
+            ) / (#{strip-unit($max-vw)} - #{strip-unit($min-vw)}))
+    ),
+    #{$max}
+  );
+}
 @mixin transition($time) {
   transition: all $time ease-in-out;
 }
@@ -5,4 +26,16 @@
 @mixin container {
   max-width: 1172px;
   margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media (max-width: 1200px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (max-width: 400px) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }

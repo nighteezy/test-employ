@@ -6,16 +6,22 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 30px;
+  @include fluid(gap, 15px, 30px);
 
   &__row {
     display: flex;
-    gap: 30px;
+    justify-content: space-between;
+    @include fluid(gap, 15px, 30px);
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
   }
 
   &__input {
     width: 31.5%;
-    padding: 12px 10px;
+    @include fluid(padding, 8px, 12px);
+    @include fluid(font-size, 14px, 18px);
     border: 1px solid $border-color;
     border-radius: 3px;
     background-color: $input-bg-color;
@@ -29,9 +35,13 @@
 
     &::placeholder {
       font-weight: 400;
-      font-size: 18px;
+      @include fluid(font-size, 14px, 18px);
       line-height: 100%;
       color: $bg-order-color;
+    }
+
+    @media (max-width: 767px) {
+      width: 100%;
     }
   }
 
@@ -41,29 +51,33 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    @include fluid(gap, 5px, 10px);
     width: 34%;
     border: 2px solid $bg-button-color;
     border-radius: 3px;
-    padding: 12px 0;
+    @include fluid(padding, 8px, 12px);
     color: $bg-order-color;
     font-weight: 600;
-    font-size: 15px;
+    @include fluid(font-size, 13px, 15px);
     line-height: 100%;
     text-transform: uppercase;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   &__button {
     margin: 0 auto;
     background: $bg-button-color;
     border: 1px solid #fff;
-    color: $text-color;
+    color: $text-color-light;
     width: 32%;
-    padding: 17px;
+    @include fluid(padding, 14px, 17px);
     border-radius: 4px;
     font-family: Lato;
     font-weight: 600;
-    font-size: 15px;
+    @include fluid(font-size, 13px, 15px);
     line-height: 100%;
     text-transform: uppercase;
     cursor: pointer;
@@ -72,6 +86,10 @@
     &:hover {
       background: color.adjust($accent-color, $lightness: -10%);
     }
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
 }
 
@@ -79,10 +97,14 @@
   position: relative;
   width: 31.5%;
   font-weight: 400;
-  font-size: 18px;
+  @include fluid(font-size, 14px, 18px);
   line-height: 100%;
   cursor: pointer;
-  color: $bg-order-color; // цвет плейсхолдера
+  color: $bg-order-color;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 
   &.open {
     .form__trigger {
@@ -90,7 +112,7 @@
       border-color: $accent-color;
       border: 1px solid $bg-footer-color;
       border-radius: 3px;
-      color: $text-color;
+      color: $text-color-light;
     }
     .form__options {
       display: block;
@@ -100,7 +122,7 @@
   }
 
   .form__trigger {
-    padding: 12px 10px;
+    @include fluid(padding, 8px, 12px);
     border: 1px solid $border-color;
     border-radius: 3px;
     background-color: $input-bg-color;
@@ -120,40 +142,13 @@
     overflow-y: auto;
     display: none;
     z-index: 10;
-    font-size: 16px;
-
-    /* Для Chrome, Edge, Safari */
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: $bg-footer-color; // фон трека
-      border-radius: 3px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: $bg-button-color; // сам ползунок
-      border-radius: 3px;
-    }
-
-    &::-webkit-scrollbar-button {
-      display: none;
-      width: 0;
-      height: 0;
-      background: transparent;
-      border: none;
-    }
-
-    /* Для Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: $accent-color $progress-bg-color;
+    @include fluid(font-size, 14px, 16px);
   }
 
   .form__option {
-    padding: 10px 10px;
+    @include fluid(padding, 8px, 10px);
     border: none;
-    color: $text-color;
+    color: $text-color-light;
 
     &:hover {
       color: $accent-color;
@@ -166,18 +161,22 @@
   flex-direction: column;
   justify-content: space-between;
   width: 71%;
-  color: $text-color;
+  color: $text-color-light;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 
   &__text {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 16px;
+    @include fluid(margin-bottom, 10px, 16px);
   }
 
   &__label {
     font-weight: 600;
-    font-size: 18px;
+    @include fluid(font-size, 14px, 18px);
     line-height: 100%;
     text-align: right;
   }
@@ -185,7 +184,7 @@
   &__container {
     position: relative;
     width: 100%;
-    height: 10px;
+    @include fluid(height, 6px, 10px);
     background-color: $progress-bg-color;
     border: 1px solid #fff;
     border-radius: 3px;
@@ -195,10 +194,10 @@
     position: absolute;
     top: 50%;
     left: 75%;
-    width: 23px;
-    height: 23px;
+    @include fluid(width, 16px, 23px);
+    @include fluid(height, 16px, 23px);
     background-color: $bg-button-color;
-    border: 3px solid $border-button-color;
+    @include fluid(border-width, 2px, 3px);
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translate(-50%, -50%);

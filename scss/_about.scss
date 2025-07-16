@@ -3,21 +3,21 @@
 
 .about {
   position: relative;
-  background: url("../asset/about-bg.jpg") no-repeat center/cover;
-  color: $text-color-black;
-  margin-top: -60px;
-  padding: calc(103px + 60px) 0 202px 0;
+  background: url("../asset/about-bg.webp") no-repeat center/cover;
+  color: $text-color-dark;
+  margin-top: -6.5rem;
+  padding: calc(6.4rem + 6.5rem) 0 12.6rem 0;
 
   &__container {
-    @include container;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    @include fluid(gap, 40px, 80px);
+    @include container;
   }
 
   &__title {
     font-weight: 700;
-    font-size: 48px;
+    @include fluid(font-size, 24px, 48px);
     line-height: 100%;
     letter-spacing: 0%;
     text-transform: uppercase;
@@ -25,6 +25,13 @@
   }
   &__accent {
     color: $accent-color;
+  }
+
+  &__text {
+    font-weight: 700;
+    @include fluid(font-size, 15px, 20px);
+    line-height: 100%;
+    margin-bottom: 10px;
   }
 
   &__list {
@@ -46,24 +53,93 @@
 
   &__buttons {
     display: flex;
-    gap: 30px;
+    @include fluid(gap, 15px, 30px);
   }
 
   &__buy {
-    color: $text-color;
-    border: 1px solid $text-color;
-    border-radius: 4px;
+    color: $text-color-light;
+    border: 1px solid $border-color-light;
     background: $bg-button-color;
-    padding: 15px 63px;
-    text-transform: uppercase;
+    @include fluid(padding-top, 10px, 15px);
+    @include fluid(padding-bottom, 10px, 15px);
+    @include fluid(padding-left, 30px, 63px);
+    @include fluid(padding-right, 30px, 63px);
+    @include transition(0.3s);
+
+    &:hover {
+      cursor: pointer;
+      color: $text-color-dark;
+      border-color: $text-color-dark;
+      background: $bg-color-light;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    // Градиентный фон при наведении
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+      z-index: 0;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
   }
 
   &__more {
-    color: $text-color-black;
-    border: 1px solid $text-color-black;
-    border-radius: 4px;
-    background: $text-color;
-    padding: 15px 63px;
-    text-transform: uppercase;
+    color: $text-color-dark;
+    border: 1px solid $border-color-dark;
+    background: $bg-color-light;
+    @include fluid(padding-top, 10px, 15px);
+    @include fluid(padding-bottom, 10px, 15px);
+    @include fluid(padding-left, 30px, 63px);
+    @include fluid(padding-right, 30px, 63px);
+    @include transition(0.3s);
+
+    &:hover {
+      cursor: pointer;
+      color: $text-color-light;
+      border-color: $border-color-light;
+      background: $bg-button-color;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    // Анимированный бордер при наведении
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      z-index: 0;
+    }
+
+    &:hover::after {
+      transform: translateX(100%);
+    }
   }
 }

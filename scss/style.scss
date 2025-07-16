@@ -8,28 +8,43 @@
 @use "footer";
 @use "about";
 
-/* Глобальные стили */
-
-* {
+html {
+  font-size: 16px;
   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
   font-family: "Lato", sans-serif;
   margin: 0;
   padding: 0;
-  color: $text-color;
-  background: #f9f9f9;
+  color: $text-color-light;
 }
 
 h1,
 h2,
 h3 {
-  margin: 0 0 20px 0;
+  margin: 0 0 1.25rem 0; // 20px -> 1.25rem
 }
 
 p {
   margin: 0;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {

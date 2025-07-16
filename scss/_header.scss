@@ -4,24 +4,22 @@
 .header {
   position: sticky;
   top: 0;
-  background: $bg-color;
-  border-bottom: 1px solid $border-color;
+  padding: 2rem 0;
+  background: rgba($bg-header-color, 0.9);
   z-index: 100;
-  opacity: 0.9;
-  border: none;
 
   &__container {
-    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    @include container;
   }
 
   &__logo {
-    font-weight: bold;
-    font-size: 20px;
-    color: $text-color;
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    @include fluid(font-size, 20px, 28px);
+    color: $text-color-light;
     text-decoration: none;
   }
 
@@ -31,19 +29,78 @@
 
   &__menu {
     display: flex;
-    list-style: none;
-    gap: 60px;
-    margin: 0;
-    padding: 0;
+    @include fluid(gap, 20px, 60px);
+
+    @media (max-width: 767px) {
+      position: absolute;
+      top: 100%; // под хедером
+      left: 0;
+      right: 0;
+      background: $bg-header-color;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      z-index: 150;
+    }
+
+    &.active {
+      max-height: 400px; // достаточно, чтобы показать все пункты
+      padding: 20px 0;
+    }
   }
 
   &__link {
     text-decoration: none;
-    color: $text-color;
+    color: $text-color-light;
+    font-weight: 500;
+    @include fluid(font-size, 14px, 18px);
     @include transition(0.3s);
 
     &:hover {
       color: $accent-color;
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 200;
+
+    span {
+      display: block;
+      height: 3px;
+      background: $text-color-light;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 767px) {
+      display: flex;
+    }
+  }
+
+  // Анимация бургера при активном меню
+  &__burger.active {
+    span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
     }
   }
 }
