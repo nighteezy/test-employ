@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:meta";
+@use "variables" as *;
 
 @function strip-unit($number) {
   @if meta.type-of($number) == "number" {
@@ -19,6 +20,17 @@
     #{$max}
   );
 }
+
+@mixin hover-button {
+  &:hover {
+    color: $text-color-light;
+    background: $bg-button-hover;
+    border-color: $border-button-color;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
 @mixin transition($time) {
   transition: all $time ease-in-out;
 }

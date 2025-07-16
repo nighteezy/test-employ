@@ -1,49 +1,27 @@
-// === Тексты ===
 $text-color-light: #ffffff;
 $text-color-dark: #000000;
 $text-color-gray: #bbbbbb;
 $footer-text-color: #c3c3c3;
 
-// === Фоновые цвета ===
-$bg-header-color: rgba(16, 16, 29, 0.9); // Темно-серый полупрозрачный
-$bg-color-primary: rgba(16, 16, 29, 0.9);
-$bg-button-color: #3e9cdc; // Основной цвет кнопок (голубой)
-$bg-button-hover: #0078d4; // Цвет при наведении
+$bg-header-color: rgba(16, 16, 29, 0.9);
+$bg-button-color: #3e9cdc;
+$bg-button-hover: #0078d4;
 $bg-button-active: #005fa3;
-$bg-order-color: #272733; // Фон шагов заказа
-$bg-footer-color: #3d4050; // Фон футера
+$bg-order-color: #272733;
+$bg-footer-color: #3d4050;
 $bg-color-light: #ffffff;
 $bg-hover-button: rgba(62, 156, 220, 0.1);
 
-// +++ Новые цвета для эффектов +++
-$accent-color: #43abf0; // Базовый акцент
-$accent-secondary: #3ecdc8; // Вторичный акцент (для градиентов)
-$accent-warning: #ffac33; // Предупреждающий цвет
-$accent-success: #00c853; // Успех / ок
-$accent-danger: #ff4444; // Ошибка
+$accent-color: #43abf0;
 
-// === Границы и акценты ===
 $border-color: #ddd;
 $border-button-color: #286690;
 $border-color-light: #ffffff;
 $border-color-dark: #000000;
 
-// === Элементы UI ===
 $dot-color: #c4c4c4;
+$stripe-color: #c3c3c3;
 $input-bg-color: rgba(255, 255, 255, 0.85);
 $progress-bg-color: rgba(255, 255, 255, 0.7);
 $select-bg-color: rgba(39, 39, 51, 0.9);
 $select-active-bg-color: rgba(61, 64, 80, 0.85);
-
-// +++ Новые цвета для интерактивных элементов +++
-$button-gradient-start: #3e9cdc;
-$button-gradient-end: #00b8d9;
-$button-shadow-color: rgba(62, 156, 220, 0.4);
-
-$input-focus-border: #00b8d9;
-$input-placeholder-color: rgba(0, 0, 0, 0.3);
-
-// +++ Цвета для эффектов на кнопках +++
-$shine-color: rgba(255, 255, 255, 0.3);
-$hover-overlay: rgba(255, 255, 255, 0.1);
-$shadow-button-hover: rgba(0, 0, 0, 0.15);

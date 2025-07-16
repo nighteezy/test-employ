@@ -29,7 +29,8 @@
 .header {
   position: sticky;
   top: 0;
-  padding: 2rem 0;
+  padding-top: clamp(0px, 0px + (32 - 0) * (100vw - 320px) / (1200 - 320), 32px);
+  padding-bottom: clamp(0px, 0px + (32 - 0) * (100vw - 320px) / (1200 - 320), 32px);
   background: rgba(16, 16, 29, 0.9);
   z-index: 100;
 }
@@ -60,6 +61,11 @@
   font-size: clamp(20px, 20px + (28 - 20) * (100vw - 320px) / (1200 - 320), 28px);
   color: #ffffff;
   text-decoration: none;
+}
+@media (max-width: 767px) {
+  .header__logo {
+    margin-bottom: 20px;
+  }
 }
 .header__accent {
   color: #43abf0;
@@ -169,13 +175,13 @@
 }
 .order__description {
   color: #bbbbbb;
-  margin-bottom: 80px;
+  margin-bottom: clamp(40px, 40px + (80 - 40) * (100vw - 320px) / (1200 - 320), 80px);
   font-size: clamp(14px, 14px + (16 - 14) * (100vw - 320px) / (1200 - 320), 16px);
   text-align: center;
 }
 .order__list {
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: clamp(40px, 40px + (80 - 40) * (100vw - 320px) / (1200 - 320), 80px);
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -185,6 +191,7 @@
 @media (max-width: 767px) {
   .order__list {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 .order__item {
@@ -195,6 +202,7 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  z-index: 1;
 }
 @media (max-width: 767px) {
   .order__item {
@@ -301,6 +309,14 @@
   font-size: clamp(13px, 13px + (15 - 13) * (100vw - 320px) / (1200 - 320), 15px);
   line-height: 100%;
   text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+.form__file:hover {
+  color: #ffffff;
+  background: #0078d4;
+  border-color: #286690;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 767px) {
   .form__file {
@@ -324,7 +340,11 @@
   transition: all 0.3s ease-in-out;
 }
 .form__button:hover {
-  background: rgb(19.7684729064, 149.8965517241, 236.2315270936);
+  color: #ffffff;
+  background: #0078d4;
+  border-color: #286690;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 767px) {
   .form__button {
@@ -444,7 +464,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: clamp(30px, 30px + (80 - 30) * (100vw - 320px) / (1200 - 320), 80px);
+  gap: clamp(20px, 20px + (40 - 20) * (100vw - 320px) / (1200 - 320), 40px);
   max-width: 1172px;
   margin: 0 auto;
   padding-left: 15px;
@@ -462,31 +482,15 @@
     padding-right: 25px;
   }
 }
-.footer__container > div {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.footer__container > div:not(:first-child)::before {
-  content: "";
-  position: absolute;
-  left: -55px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #c3c3c3;
-  width: 1px;
-  height: clamp(14px, 14px + (18 - 14) * (100vw - 320px) / (1200 - 320), 18px);
-}
-@media (max-width: 767px) {
-  .footer__container > div:not(:first-child)::before {
-    display: none;
+@media (max-width: 1199px) {
+  .footer__container {
+    justify-content: center;
   }
 }
 @media (max-width: 767px) {
   .footer__container {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
   }
 }
 .footer__license {
@@ -494,6 +498,17 @@
   font-size: clamp(11px, 11px + (13 - 11) * (100vw - 320px) / (1200 - 320), 13px);
   line-height: 100%;
   color: #c3c3c3;
+}
+.footer__separator {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  background-color: #c3c3c3;
+}
+@media (max-width: 767px) {
+  .footer__separator {
+    display: none;
+  }
 }
 .footer__list {
   display: flex;
@@ -588,73 +603,32 @@
   display: flex;
   gap: clamp(15px, 15px + (30 - 15) * (100vw - 320px) / (1200 - 320), 30px);
 }
-.about__buy {
-  color: #ffffff;
+.about__buy, .about__more {
   border: 1px solid #ffffff;
-  background: #3e9cdc;
   padding-top: clamp(10px, 10px + (15 - 10) * (100vw - 320px) / (1200 - 320), 15px);
   padding-bottom: clamp(10px, 10px + (15 - 10) * (100vw - 320px) / (1200 - 320), 15px);
   padding-left: clamp(30px, 30px + (63 - 30) * (100vw - 320px) / (1200 - 320), 63px);
   padding-right: clamp(30px, 30px + (63 - 30) * (100vw - 320px) / (1200 - 320), 63px);
   transition: all 0.3s ease-in-out;
-}
-.about__buy:hover {
   cursor: pointer;
-  color: #000000;
-  border-color: #000000;
-  background: #ffffff;
+  will-change: transform, box-shadow;
+}
+.about__buy:hover, .about__more:hover {
+  color: #ffffff;
+  background: #0078d4;
+  border-color: #286690;
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
-.about__buy::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 50%;
-  z-index: 0;
-  transition: transform 0.5s ease;
-}
-.about__buy:hover::before {
-  transform: translate(-50%, -50%) scale(1);
+.about__buy {
+  color: #ffffff;
+  background: #3e9cdc;
+  border-color: #ffffff;
 }
 .about__more {
   color: #000000;
-  border: 1px solid #000000;
   background: #ffffff;
-  padding-top: clamp(10px, 10px + (15 - 10) * (100vw - 320px) / (1200 - 320), 15px);
-  padding-bottom: clamp(10px, 10px + (15 - 10) * (100vw - 320px) / (1200 - 320), 15px);
-  padding-left: clamp(30px, 30px + (63 - 30) * (100vw - 320px) / (1200 - 320), 63px);
-  padding-right: clamp(30px, 30px + (63 - 30) * (100vw - 320px) / (1200 - 320), 63px);
-  transition: all 0.3s ease-in-out;
-}
-.about__more:hover {
-  cursor: pointer;
-  color: #ffffff;
-  border-color: #ffffff;
-  background: #3e9cdc;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-.about__more::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-  z-index: 0;
-}
-.about__more:hover::after {
-  transform: translateX(100%);
+  border-color: #000000;
 }
 
 html {

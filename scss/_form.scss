@@ -61,6 +61,8 @@
     @include fluid(font-size, 13px, 15px);
     line-height: 100%;
     text-transform: uppercase;
+    @include transition(0.3s);
+    @include hover-button;
 
     @media (max-width: 767px) {
       width: 100%;
@@ -82,10 +84,7 @@
     text-transform: uppercase;
     cursor: pointer;
     @include transition(0.3s);
-
-    &:hover {
-      background: color.adjust($accent-color, $lightness: -10%);
-    }
+    @include hover-button;
 
     @media (max-width: 767px) {
       width: 100%;

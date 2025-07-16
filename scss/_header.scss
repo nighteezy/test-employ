@@ -4,7 +4,8 @@
 .header {
   position: sticky;
   top: 0;
-  padding: 2rem 0;
+  @include fluid(padding-top, 0px, 32px);
+  @include fluid(padding-bottom, 0px, 32px);
   background: rgba($bg-header-color, 0.9);
   z-index: 100;
 
@@ -21,6 +22,10 @@
     @include fluid(font-size, 20px, 28px);
     color: $text-color-light;
     text-decoration: none;
+
+    @media (max-width: 767px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__accent {
@@ -33,7 +38,7 @@
 
     @media (max-width: 767px) {
       position: absolute;
-      top: 100%; // под хедером
+      top: 100%;
       left: 0;
       right: 0;
       background: $bg-header-color;
@@ -49,7 +54,7 @@
     }
 
     &.active {
-      max-height: 400px; // достаточно, чтобы показать все пункты
+      max-height: 400px;
       padding: 20px 0;
     }
   }
@@ -91,7 +96,6 @@
     }
   }
 
-  // Анимация бургера при активном меню
   &__burger.active {
     span:nth-child(1) {
       transform: translateY(7.5px) rotate(45deg);
