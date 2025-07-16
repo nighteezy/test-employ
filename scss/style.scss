@@ -1,3 +1,4 @@
+@use "fonts";
 @use "sass:color";
 @use "variables" as *;
 @use "mixins" as *;
@@ -8,8 +9,13 @@
 @use "about";
 
 /* Глобальные стили */
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
   padding: 0;
   color: $text-color;
@@ -20,6 +26,10 @@ h1,
 h2,
 h3 {
   margin: 0 0 20px 0;
+}
+
+p {
+  margin: 0;
 }
 
 @media (max-width: 768px) {

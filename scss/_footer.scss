@@ -2,10 +2,8 @@
 @use "mixins" as *;
 
 .footer {
-  background: $bg-color;
-  border-top: 1px solid $border-color;
+  background: $bg-footer-color;
   padding: 20px 0;
-  margin-top: 40px;
 
   &__container {
     @include container;

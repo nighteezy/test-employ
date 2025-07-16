@@ -5,40 +5,202 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 400px;
+  width: 100%;
+  gap: 30px;
 
-  &__label {
+  &__row {
     display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    color: $text-color;
+    gap: 30px;
   }
 
   &__input {
-    padding: 10px;
+    width: 31.5%;
+    padding: 12px 10px;
     border: 1px solid $border-color;
-    border-radius: 4px;
+    border-radius: 3px;
+    background-color: $input-bg-color;
+    color: $bg-order-color;
     @include transition(0.3s);
 
     &:focus {
       outline: none;
       border-color: $accent-color;
     }
+
+    &::placeholder {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 100%;
+      color: $bg-order-color;
+    }
+  }
+
+  &__file {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 34%;
+    border: 2px solid $bg-button-color;
+    border-radius: 3px;
+    padding: 12px 0;
+    color: $bg-order-color;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 100%;
+    text-transform: uppercase;
   }
 
   &__button {
+    margin: 0 auto;
     background: $bg-button-color;
-    color: #fff;
-    border: none;
-    padding: 12px;
+    border: 1px solid #fff;
+    color: $text-color;
+    width: 32%;
+    padding: 17px;
     border-radius: 4px;
+    font-family: Lato;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 100%;
+    text-transform: uppercase;
     cursor: pointer;
-    font-size: 16px;
     @include transition(0.3s);
 
     &:hover {
       background: color.adjust($accent-color, $lightness: -10%);
     }
+  }
+}
+
+.form__select {
+  position: relative;
+  width: 31.5%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  cursor: pointer;
+  color: $bg-order-color; // цвет плейсхолдера
+
+  &.open {
+    .form__trigger {
+      background-color: $select-active-bg-color;
+      border-color: $accent-color;
+      border: 1px solid $bg-footer-color;
+      border-radius: 3px;
+      color: $text-color;
+    }
+    .form__options {
+      display: block;
+      background-color: $bg-order-color;
+      border: 1px solid $bg-footer-color;
+    }
+  }
+
+  .form__trigger {
+    padding: 12px 10px;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    background-color: $input-bg-color;
+    color: inherit;
+    transition: border-color 0.3s;
+  }
+
+  .form__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $input-bg-color;
+    border: 1px solid $border-color;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 10;
+    font-size: 16px;
+
+    /* Для Chrome, Edge, Safari */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $bg-footer-color; // фон трека
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $bg-button-color; // сам ползунок
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+      width: 0;
+      height: 0;
+      background: transparent;
+      border: none;
+    }
+
+    /* Для Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: $accent-color $progress-bg-color;
+  }
+
+  .form__option {
+    padding: 10px 10px;
+    border: none;
+    color: $text-color;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 71%;
+  color: $text-color;
+
+  &__text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    text-align: right;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background-color: $progress-bg-color;
+    border: 1px solid #fff;
+    border-radius: 3px;
+  }
+
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    width: 23px;
+    height: 23px;
+    background-color: $bg-button-color;
+    border: 3px solid $border-button-color;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
   }
 }
