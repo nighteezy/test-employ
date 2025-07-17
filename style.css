@@ -1,27 +1,27 @@
 @font-face {
   font-family: "Lato";
-  src: url("../fonts/Lato-Regular.woff2") format("woff2");
+  src: url("./fonts/Lato-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Lato";
-  src: url("../fonts/Lato-Bold.woff2") format("woff2");
+  src: url("./fonts/Lato-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Lato";
-  src: url("../fonts/Lato-Black.woff2") format("woff2");
+  src: url("./fonts/Lato-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Raleway";
-  src: url("/fonts/Raleway-Bold.woff2") format("woff2");
+  src: url("./fonts/Raleway-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -141,8 +141,9 @@
 }
 
 .order {
-  padding: 121px 0 151px 0;
-  background: url("../asset/order-bg.png"), #272733;
+  padding-top: clamp(60px, 60px + (121 - 60) * (100vw - 320px) / (1200 - 320), 121px);
+  padding-bottom: clamp(60px, 60px + (151 - 60) * (100vw - 320px) / (1200 - 320), 151px);
+  background: url("./asset/order-bg.png"), #272733;
 }
 .order__container {
   display: flex;
@@ -185,7 +186,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   gap: clamp(15px, 15px + (30 - 15) * (100vw - 320px) / (1200 - 320), 30px);
 }
 @media (max-width: 767px) {
@@ -197,12 +198,43 @@
 .order__item {
   position: relative;
   display: flex;
-  flex: 1 0 auto;
-  max-width: calc(20% - 30px);
+  flex: 0 1 calc(20% - 30px);
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   z-index: 1;
+}
+.order__item::after {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: 8%;
+  width: 200%;
+  height: 6px;
+  background: url("./asset/dot-group-icon.svg") center no-repeat;
+  background-size: contain;
+  transform: translateX(0);
+  z-index: 0;
+}
+.order__item:nth-child(5n)::after {
+  display: none;
+}
+.order__item:last-child::after {
+  display: none;
+}
+@media (max-width: 1200px) {
+  .order__item::after {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .order__item {
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: 180px;
+  }
+  .order__item:nth-child(3n)::after {
+    display: none;
+  }
 }
 @media (max-width: 767px) {
   .order__item {
@@ -228,6 +260,7 @@
   width: clamp(60px, 60px + (90 - 60) * (100vw - 320px) / (1200 - 320), 90px);
   height: clamp(60px, 60px + (90 - 60) * (100vw - 320px) / (1200 - 320), 90px);
   border-width: clamp(3px, 3px + (5 - 3) * (100vw - 320px) / (1200 - 320), 5px);
+  z-index: 1;
 }
 @media (max-width: 767px) {
   .order__circle {
@@ -254,17 +287,30 @@
 
 .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   gap: clamp(15px, 15px + (30 - 15) * (100vw - 320px) / (1200 - 320), 30px);
 }
-.form__row {
+@media (max-width: 767px) {
+  .form {
+    flex-direction: column;
+  }
+}
+.form__bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   gap: clamp(15px, 15px + (30 - 15) * (100vw - 320px) / (1200 - 320), 30px);
 }
+@media (max-width: 1023px) {
+  .form__bottom {
+    flex-wrap: wrap;
+  }
+}
 @media (max-width: 767px) {
-  .form__row {
+  .form__bottom {
     flex-direction: column;
   }
 }
@@ -542,7 +588,7 @@
 
 .about {
   position: relative;
-  background: url("../asset/about-bg.webp") no-repeat center/cover;
+  background: url("./asset/about-bg.webp") no-repeat center/cover;
   color: #000000;
   margin-top: -6.5rem;
   padding: 12.9rem 0 12.6rem 0;

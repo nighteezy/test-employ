@@ -4,14 +4,24 @@
 
 .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   @include fluid(gap, 15px, 30px);
 
-  &__row {
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+
+  &__bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
     @include fluid(gap, 15px, 30px);
+    @media (max-width: 1023px) {
+      flex-wrap: wrap;
+    }
 
     @media (max-width: 767px) {
       flex-direction: column;
