@@ -107,6 +107,7 @@
   color: #43abf0;
 }
 .header__burger {
+  position: relative;
   display: none;
   flex-direction: column;
   justify-content: space-between;
